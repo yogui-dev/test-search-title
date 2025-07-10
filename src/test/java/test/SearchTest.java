@@ -5,11 +5,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static java.lang.Thread.*; // Para poder usar sleep sin escribir Thread.sleep
 import static org.junit.jupiter.api.Assertions.assertTrue; // Para hacer afirmaciones en las pruebas
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class SearchTest {
 
@@ -18,12 +18,11 @@ public class SearchTest {
 
     /**
      * Este método se ejecuta **antes de cada test**.
-     * Inicializa el navegador (en este caso, Chrome).
-     * Puedes cambiar `ChromeDriver` por `FirefoxDriver` si lo deseas.
+     * Inicializa el navegador (en este caso, Firefox).
      */
     @BeforeEach
     public void setUp() {
-        driver = new ChromeDriver(); // Inicia el navegador Chrome
+        driver = new FirefoxDriver(); // Inicia el navegador Firefox
     }
 
     /**
@@ -46,7 +45,7 @@ public class SearchTest {
             // Si ocurre cualquier excepción (como problemas de red, timeout, etc.)
             System.out.println("Error durante la prueba: " + e.getMessage());
             e.printStackTrace();
-            // Podrías usar: fail("El test falló debido a una excepción");
+            fail("El test falló debido a una excepción");
         }
     }
 
